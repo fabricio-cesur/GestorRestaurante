@@ -29,28 +29,27 @@ public class Menu {
             switch (opcion) {
                 case 1 -> {
                     res.registrarMesa(); //no funciona, no reconoce la clase 'Restaurante'
-                    res.mostrarMesas();
                 }
                 case 2 -> {
-                    //res.registrarPlato()
+                    res.registrarPlato();
                 }
                 case 3 -> {
-                    //res.registrarPedido()
+                    //res.registrarPedido();
                 }
                 case 4 -> {
-                    //res.modificarMesas()
+                    //res.modificarMesas();
                 }
                 case 5 -> {
-                    //res.modificarPlatos()
+                    //res.modificarPlatos();
                 }
                 case 6 -> {
-                    //res.modificarPedidos()
+                    //res.modificarPedidos();
                 }
                 case 7 -> {
-                    //res.cargarDatos()
+                    //res.cargarDatos();
                 }
                 case 8 -> {
-                    //res.guardarDatos()
+                    //res.guardarDatos();
                 }
                 case 9 -> {
                     //salir
