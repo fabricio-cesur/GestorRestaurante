@@ -1,9 +1,12 @@
 import java.util.Scanner;
 
+
 public class Menu {
     @SuppressWarnings("ConvertToTryWithResources")
     public static void main(String[] args) {
         
+        Restaurante res = new Restaurante();
+
         Scanner sc = new Scanner(System.in);
         int opcion;
 
@@ -25,7 +28,8 @@ public class Menu {
             
             switch (opcion) {
                 case 1 -> {
-                    //res.registrarMesa()
+                    res.registrarMesa(); //no funciona, no reconoce la clase 'Restaurante'
+                    res.mostrarMesas();
                 }
                 case 2 -> {
                     //res.registrarPlato()

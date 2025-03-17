@@ -4,7 +4,6 @@ public class Plato {
     public String nombre;
     public float precio;
     
-    //Builder
     public Plato(String cod, String nam, float pri) {
         this.codigo = cod;
         this.nombre = nam;
