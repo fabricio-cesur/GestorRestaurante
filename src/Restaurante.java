@@ -58,6 +58,9 @@ public class Restaurante {
     }
     
     public void registrarPedido() {
+
+        boolean seguir;
+
         //TODO: Agregar número ID del pedido
         Mesa mesa_pedido;
         LinkedList<Plato> platos_pedido = new LinkedList<>();
@@ -65,13 +68,24 @@ public class Restaurante {
         int numero_mesa_pedido;
         String codigo_plato_pedido;
 
-        //TODO: Validar que el número de la mesa existe
         do {
+            seguir = true;
             System.out.print("Ingresa el número de la mesa: ");
             numero_mesa_pedido = sc.nextInt();
             sc.nextLine();
             mesa_pedido = lista_mesas.get(numero_mesa_pedido);
-        } while (numero_mesa_pedido >= 0);
+
+            for (Mesa mesa : this.lista_mesas) {
+                if (numero_mesa_pedido == mesa.getNumero()) {
+                    seguir = false;
+                    break;
+                }
+            }
+            if (!seguir) {
+                System.out.println("ERR0R: No se encontró esa mesa.");
+            }
+
+        } while (!seguir);
 
         //TODO: Validar que el código del plato exista y poder pedir todos los platos que se requiera
         do {
