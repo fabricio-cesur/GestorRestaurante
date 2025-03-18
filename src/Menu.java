@@ -22,7 +22,8 @@ public class Menu {
             System.out.println("6. Modificar Pedidos");
             System.out.println("7. Cargar Datos");
             System.out.println("8. Guardar Datos");
-            System.out.println("9. Salir");
+            System.out.println("9. Mostrar los Datos");
+            System.out.println("0. Salir");
             System.out.print(">>> ");
             opcion = sc.nextInt();
             
@@ -34,7 +35,7 @@ public class Menu {
                     res.registrarPlato();
                 }
                 case 3 -> {
-                    //res.registrarPedido();
+                    res.registrarPedido();
                 }
                 case 4 -> {
                     //res.modificarMesas();
@@ -52,12 +53,20 @@ public class Menu {
                     //res.guardarDatos();
                 }
                 case 9 -> {
+                    res.mostrarMesas();
+                    System.out.println("\n");
+                    res.mostrarPlatos();
+                    System.out.println("\n");
+                    res.mostrarPedidos();
+                    System.out.println("\n");
+                }
+                case 0 -> {
                     //salir
                 }
                 default -> {}
             }
             
-        } while (opcion < 9);
+        } while (opcion > 0);
         sc.close();
     }
 }

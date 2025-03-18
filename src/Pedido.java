@@ -2,6 +2,7 @@ import java.util.LinkedList;
 
 public class Pedido {
     
+    //TODO: Agregar un número de ID para los pedidos
     public Mesa mesa;
     public LinkedList<Plato> platos = new LinkedList<>();
     public boolean completado;
