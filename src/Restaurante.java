@@ -77,6 +77,7 @@ public class Restaurante {
 
             for (Mesa mesa : this.lista_mesas) {
                 if (numero_mesa_pedido == mesa.getNumero()) { terminar = true; break; }
+                if (numero_mesa_pedido == mesa.getNumero()) { terminar = true; break; }
             }
             if (!terminar) {
                 System.out.println("ERR0R: No se encontró esa mesa.");
@@ -84,8 +85,6 @@ public class Restaurante {
 
         } while (!terminar);
 
-        //TODO: Validar que el código del plato exista y poder pedir todos los platos que se requiera
-        //GIT AMMEND
         terminar = false;
         System.out.println("Introduzca un 0 o SALIR para dejar de introducir platos");
         do {
