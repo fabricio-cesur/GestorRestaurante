@@ -8,7 +8,7 @@ public class Mesa {
         this.capacidad = cap;
     }
 
-    public int getNum() { return numero; }
-    public int getCap() { return capacidad; }
+    public int getNumero() { return numero; }
+    public int getCapacidad() { return capacidad; }
 }
 

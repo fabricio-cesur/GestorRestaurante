@@ -28,7 +28,7 @@ public class Menu {
             
             switch (opcion) {
                 case 1 -> {
-                    res.registrarMesa(); //no funciona, no reconoce la clase 'Restaurante'
+                    res.registrarMesa();
                 }
                 case 2 -> {
                     res.registrarPlato();
