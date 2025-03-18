@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -31,9 +30,9 @@ public class Restaurante {
     public void registrarPlato() {
         String codigo_plato;
         String nombre_plato;
-        double precio_plato = 0;
+        double precio_plato = 0.00;
 
-        boolean seguir = false;
+        boolean seguir;
 
         //TODO: Crear validación para el formato del código del plato (Como que solo tenga 4 carácteres en mayúsculas)
         System.out.print("Ingresa el código del plato: ");
@@ -46,10 +45,13 @@ public class Restaurante {
             try {
                 System.out.print("Ingresa el precio del plato: ");
                 precio_plato = sc.nextDouble();
-            } catch (InputMismatchException e) {
+                seguir = true;
+            } catch (java.util.InputMismatchException e) {
                 System.err.println("ERR0R el precio debe ser decimal");
+                sc.nextLine();
+                seguir = false;
             }
-        } while (seguir);
+        } while (!seguir);
 
         Plato plato = new Plato(codigo_plato, nombre_plato, precio_plato);
         lista_platos.put(codigo_plato, plato);
