@@ -32,7 +32,7 @@ public class Restaurante {
         String nombre_plato;
         double precio_plato = 0.00;
 
-        boolean seguir;
+        boolean terminar;
 
         //TODO: Crear validación para el formato del código del plato (Como que solo tenga 4 carácteres en mayúsculas)
         System.out.print("Ingresa el código del plato: ");
@@ -45,13 +45,13 @@ public class Restaurante {
             try {
                 System.out.print("Ingresa el precio del plato: ");
                 precio_plato = sc.nextDouble();
-                seguir = true;
+                terminar = true;
             } catch (java.util.InputMismatchException e) {
                 System.err.println("ERR0R el precio debe ser decimal");
                 sc.nextLine();
-                seguir = false;
+                terminar = false;
             }
-        } while (!seguir);
+        } while (!terminar);
 
         Plato plato = new Plato(codigo_plato, nombre_plato, precio_plato);
         lista_platos.put(codigo_plato, plato);
@@ -59,7 +59,7 @@ public class Restaurante {
     
     public void registrarPedido() {
 
-        boolean seguir;
+        boolean terminar;
 
         //TODO: Agregar número ID del pedido
         Mesa mesa_pedido;
@@ -69,7 +69,7 @@ public class Restaurante {
         String codigo_plato_pedido;
 
         do {
-            seguir = true;
+            terminar = true;
             System.out.print("Ingresa el número de la mesa: ");
             numero_mesa_pedido = sc.nextInt();
             sc.nextLine();
@@ -77,15 +77,15 @@ public class Restaurante {
 
             for (Mesa mesa : this.lista_mesas) {
                 if (numero_mesa_pedido == mesa.getNumero()) {
-                    seguir = false;
+                    terminar = false;
                     break;
                 }
             }
-            if (!seguir) {
+            if (!terminar) {
                 System.out.println("ERR0R: No se encontró esa mesa.");
             }
 
-        } while (!seguir);
+        } while (!terminar);
 
         //TODO: Validar que el código del plato exista y poder pedir todos los platos que se requiera
         do {
