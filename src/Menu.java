@@ -38,19 +38,19 @@ public class Menu {
                     res.registrarPedido();
                 }
                 case 4 -> {
-                    //res.modificarMesas();
+                    //TODO: Crear el método: res.modificarMesas();
                 }
                 case 5 -> {
-                    //res.modificarPlatos();
+                    //TODO: Crear el método: res.modificarPlatos();
                 }
                 case 6 -> {
-                    //res.modificarPedidos();
+                    //TODO: Crear el método: res.modificarPedidos();
                 }
                 case 7 -> {
-                    //res.cargarDatos();
+                    //TODO: Crear el método: res.cargarDatos();
                 }
                 case 8 -> {
-                    //res.guardarDatos();
+                    //TODO: Crear el método: res.guardarDatos();
                 }
                 case 9 -> {
                     res.mostrarMesas();

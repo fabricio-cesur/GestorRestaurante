@@ -13,6 +13,7 @@ public class Restaurante {
         int numero_mesa;
         int capacidad_mesa;
 
+        //TODO: Validar que el número de mesa no se repita
         do {
             System.out.print("Ingresa el número de mesa: ");
             numero_mesa = sc.nextInt();
@@ -31,6 +32,7 @@ public class Restaurante {
         String nombre_plato;
         float precio_plato;
 
+        //TODO: Crear validación para el formato del código del plato (Como que solo tenga 4 carácteres en mayúsculas)
         System.out.print("Ingresa el código del plato: ");
         codigo_plato = sc.nextLine();
         
@@ -40,6 +42,7 @@ public class Restaurante {
         do { 
             System.out.print("Ingresa el precio del plato: ");
             precio_plato = sc.nextFloat();
+            //TODO: Mostrar mensaje al no ingresar un dato que sea correcto para que el usuario entienda el error y lo corrija
         } while (precio_plato <= 0);
 
         Plato plato = new Plato(codigo_plato, nombre_plato, precio_plato);
@@ -47,12 +50,14 @@ public class Restaurante {
     }
     
     public void registrarPedido() {
+        //TODO: Agregar número ID del pedido
         Mesa mesa_pedido;
         LinkedList<Plato> platos_pedido = new LinkedList<>();
 
         int numero_mesa_pedido;
         String codigo_plato_pedido;
 
+        //TODO: Validar que el número de la mesa existe
         do {
             System.out.print("Ingresa el número de la mesa: ");
             numero_mesa_pedido = sc.nextInt();
@@ -60,6 +65,7 @@ public class Restaurante {
             mesa_pedido = lista_mesas.get(numero_mesa_pedido);
         } while (numero_mesa_pedido >= 0);
 
+        //TODO: Validar que el código del plato exista y poder pedir todos los platos que se requiera
         do {
             System.out.print("Ingresa el código del plato: ");
             codigo_plato_pedido = sc.nextLine();
