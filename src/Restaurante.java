@@ -76,10 +76,7 @@ public class Restaurante {
             mesa_pedido = lista_mesas.get(numero_mesa_pedido);
 
             for (Mesa mesa : this.lista_mesas) {
-                if (numero_mesa_pedido == mesa.getNumero()) {
-                    terminar = false;
-                    break;
-                }
+                if (numero_mesa_pedido == mesa.getNumero()) { terminar = true; break; }
             }
             if (!terminar) {
                 System.out.println("ERR0R: No se encontró esa mesa.");
@@ -88,12 +85,23 @@ public class Restaurante {
         } while (!terminar);
 
         //TODO: Validar que el código del plato exista y poder pedir todos los platos que se requiera
+        //GIT AMMEND
+        terminar = false;
+        System.out.println("Introduzca un 0 o SALIR para dejar de introducir platos");
         do {
             System.out.print("Ingresa el código del plato: ");
             codigo_plato_pedido = sc.nextLine();
-            platos_pedido.add(lista_platos.get(codigo_plato_pedido));
-            sc.nextLine();
-        } while (false);
+            switch (codigo_plato_pedido) {
+                case "0", "SALIR", "salir" -> { terminar = true; }
+                default -> {
+                    if (lista_platos.containsKey(codigo_plato_pedido)) {
+                        platos_pedido.add(lista_platos.get(codigo_plato_pedido));
+                    } else {
+                        System.out.println("ERR0R: Plato no encontrado");
+                    }
+                }
+            }
+        } while (!terminar);
         
         Pedido pedido = new Pedido(mesa_pedido, platos_pedido);
         lista_pedidos.add(pedido);
