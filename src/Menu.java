@@ -8,7 +8,7 @@ public class Menu {
         Restaurante res = new Restaurante();
 
         Scanner sc = new Scanner(System.in);
-        int opcion;
+        String opcion;
 
         do { 
             
@@ -25,34 +25,34 @@ public class Menu {
             System.out.println("9. Mostrar los Datos");
             System.out.println("0. Salir");
             System.out.print(">>> ");
-            opcion = sc.nextInt();
+            opcion = sc.next();
             
             switch (opcion) {
-                case 1 -> {
+                case "1" -> {
                     res.registrarMesa();
                 }
-                case 2 -> {
+                case "2" -> {
                     res.registrarPlato();
                 }
-                case 3 -> {
+                case "3" -> {
                     res.registrarPedido();
                 }
-                case 4 -> {
+                case "4" -> {
                     //TODO: Crear el método: res.modificarMesas();
                 }
-                case 5 -> {
+                case "5" -> {
                     //TODO: Crear el método: res.modificarPlatos();
                 }
-                case 6 -> {
+                case "6" -> {
                     //TODO: Crear el método: res.modificarPedidos();
                 }
-                case 7 -> {
+                case "7" -> {
                     //TODO: Crear el método: res.cargarDatos();
                 }
-                case 8 -> {
+                case "8" -> {
                     //TODO: Crear el método: res.guardarDatos();
                 }
-                case 9 -> {
+                case "9" -> {
                     res.mostrarMesas();
                     System.out.println("\n");
                     res.mostrarPlatos();
@@ -60,13 +60,15 @@ public class Menu {
                     res.mostrarPedidos();
                     System.out.println("\n");
                 }
-                case 0 -> {
+                case "0" -> {
                     //salir
                 }
-                default -> {}
+                default -> {
+                    //TODO: Mensaje de comando no reconocido
+                }
             }
             
-        } while (opcion > 0);
+        } while (!opcion.equals("0"));
         sc.close();
     }
 }
