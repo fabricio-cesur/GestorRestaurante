@@ -14,7 +14,11 @@ public class Pedido {
         this.total = this.calcularTotal();
     }
 
-    public int getNumeroMesa() { return mesa.getNumero(); }
+    public int getNumeroMesa() { return this.mesa.getNumero(); }
+    public LinkedList<Plato> getListaPlatos() { return this.platos; }
+    public boolean getEstadoCompletado() { return this.completado; }
+    public double getPrecioTotal() { return this.total; }
+    
     public void cambiarEstado() { this.completado = !this.completado; }
     private double calcularTotal() {
         double precio_resultado = 0;

@@ -10,8 +10,8 @@ public class Plato {
         this.precio = pri;
     }
 
-    public String getCodigo() { return codigo; }
-    public String getNombre() { return nombre; }
-    public double getPrecio() { return precio; }
+    public String getCodigo() { return this.codigo; }
+    public String getNombre() { return this.nombre; }
+    public double getPrecio() { return this.precio; }
 }
 
