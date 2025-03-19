@@ -17,10 +17,12 @@ public class Restaurante {
         do {
             System.out.print("Ingresa el número de mesa: ");
             numero_mesa = sc.nextInt();
+            sc.nextLine();
         } while (numero_mesa <= 0);
         do { 
             System.out.print("Ingresa la capacidad de la mesa: ");
             capacidad_mesa = sc.nextInt();
+            sc.nextLine();
         } while (capacidad_mesa <= 0);
 
         Mesa mesa = new Mesa(numero_mesa, capacidad_mesa);
@@ -46,6 +48,7 @@ public class Restaurante {
                 System.out.print("Ingresa el precio del plato: ");
                 precio_plato = sc.nextDouble();
                 terminar = true;
+                sc.nextLine();
             } catch (java.util.InputMismatchException e) {
                 System.err.println("ERR0R el precio debe ser decimal");
                 sc.nextLine();
@@ -76,7 +79,6 @@ public class Restaurante {
             mesa_pedido = lista_mesas.get(numero_mesa_pedido);
 
             for (Mesa mesa : this.lista_mesas) {
-                if (numero_mesa_pedido == mesa.getNumero()) { terminar = true; break; }
                 if (numero_mesa_pedido == mesa.getNumero()) { terminar = true; break; }
             }
             if (!terminar) {
