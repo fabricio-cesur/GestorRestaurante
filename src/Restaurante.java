@@ -114,6 +114,56 @@ public class Restaurante {
         lista_pedidos.put(id, pedido);
     }
 
+
+    public void modificarMesa() {
+        boolean terminar;
+        int numero_mesa;
+
+        int nuevo_numero = 0;
+        int nueva_capacidad = 0;
+
+        Mesa mesa_modificada = null;
+
+        do { 
+            System.out.print("Número de la mesa a modificar: ");
+            numero_mesa = sc.nextInt();
+            sc.nextLine();
+            if (lista_mesas.containsKey(numero_mesa)) {
+                mesa_modificada = lista_mesas.get(numero_mesa);
+                System.out.println("Mesa Nº" + mesa_modificada.getNumero() + " con capacidad: " + mesa_modificada.getCapacidad());
+                do {
+                    System.out.print("Nuevo número: ");
+                    nuevo_numero = sc.nextInt();
+                    sc.nextLine();
+                    if (nuevo_numero <= 0) {
+                        System.out.println("ERR0R: El número de la mesa debe ser entero positivo");
+                    } else if (lista_mesas.containsKey(nuevo_numero)) {
+                        System.out.println("ERR0R: Ese número de mesa ya existe");
+                    }
+                } while (nuevo_numero <= 0 || lista_mesas.containsKey(nuevo_numero));
+                do {
+                    System.out.print("Nueva capacidad: ");
+                    nueva_capacidad = sc.nextInt();
+                    sc.nextLine();
+                    if (nueva_capacidad <= 0) {
+                        System.out.println("ERR0R: La capacidad de la mesa debe ser entero positivo");
+                    }
+                } while (nueva_capacidad <= 0);
+                terminar = true;
+            } else {
+                System.out.println("ERR0R: No se encontró la mesa");
+                terminar = false;
+            }
+        } while (!terminar);
+
+        if (mesa_modificada != null) {
+            mesa_modificada.setNumero(nuevo_numero);
+            mesa_modificada.setCapacidad(nueva_capacidad);
+        } else {
+            System.out.println("ERR0R: No se pudo establecer la mesa a modificar");
+        }
+    }
+
     
     public void mostrarMesas() {
         Mesa mesa;

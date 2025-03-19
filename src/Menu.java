@@ -76,7 +76,7 @@ public class Menu {
                     res.registrarMesa();
                 }
                 case "2", "modificar", "MODIFICAR" -> {
-                    //res.modificarMesa();
+                    res.modificarMesa();
                 }
                 case "3", "eliminar", "ELIMINAR" -> {
                     //res.eliminarMesa();

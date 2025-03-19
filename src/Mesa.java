@@ -10,5 +10,8 @@ public class Mesa {
 
     public int getNumero() { return this.numero; }
     public int getCapacidad() { return this.capacidad; }
+
+    public void setNumero(int num) { this.numero = num; }
+    public void setCapacidad(int cap) { this.capacidad = cap; }
 }
 
