@@ -21,6 +21,14 @@ public class Pedido {
     public LinkedList<Plato> getListaPlatos() { return this.platos; }
     public boolean getEstadoCompletado() { return this.completado; }
     public double getPrecioTotal() { return this.total; }
+
+    public void setID(int id) { this.id = id; }
+    public void setNumeroMesa(Mesa mes) { this.mesa = mes; }
+    public void setListaPlatos(LinkedList<Plato> pla) { this.platos = pla; }
+    public void setEstadoCompletado(boolean com) { this.completado = com; }
+    public void setPrecioTotal(double tot) { this.total = tot; }
+
+
     
     public void cambiarEstado() { this.completado = !this.completado; }
     private double calcularTotal() {
