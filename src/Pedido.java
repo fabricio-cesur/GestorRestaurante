@@ -2,19 +2,21 @@ import java.util.LinkedList;
 
 public class Pedido {
     
-    //TODO: Agregar un número de ID para los pedidos
+    public int id;
     public Mesa mesa;
     public LinkedList<Plato> platos = new LinkedList<>();
     public boolean completado;
     public double total;
 
-    public Pedido(Mesa mes, LinkedList<Plato> pla) {
+    public Pedido(int id, Mesa mes, LinkedList<Plato> pla) {
+        this.id = id;
         this.mesa = mes;
         this.platos = pla;
         this.completado = false;
         this.total = this.calcularTotal();
     }
 
+    public int getID() { return this.id; }
     public int getNumeroMesa() { return this.mesa.getNumero(); }
     public LinkedList<Plato> getListaPlatos() { return this.platos; }
     public boolean getEstadoCompletado() { return this.completado; }

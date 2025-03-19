@@ -53,12 +53,13 @@ public class Menu {
                     //TODO: Crear el método: res.guardarDatos();
                 }
                 case "9" -> {
+                    System.out.println("");
                     res.mostrarMesas();
-                    System.out.println("\n");
+                    System.out.println("");
                     res.mostrarPlatos();
-                    System.out.println("\n");
+                    System.out.println("");
                     res.mostrarPedidos();
-                    System.out.println("\n");
+                    System.out.println("");
                 }
                 case "0" -> {
                     //salir

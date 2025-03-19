@@ -64,8 +64,8 @@ public class Restaurante {
 
         boolean terminar;
 
-        //TODO: Agregar número ID del pedido
-        Mesa mesa_pedido;
+        int id = lista_pedidos.size() + 1;
+        Mesa mesa_pedido = lista_mesas.get(0);
         LinkedList<Plato> platos_pedido = new LinkedList<>();
 
         int numero_mesa_pedido;
@@ -76,15 +76,17 @@ public class Restaurante {
             System.out.print("Ingresa el número de la mesa: ");
             numero_mesa_pedido = sc.nextInt();
             sc.nextLine();
-            mesa_pedido = lista_mesas.get(numero_mesa_pedido);
 
             for (Mesa mesa : this.lista_mesas) {
-                if (numero_mesa_pedido == mesa.getNumero()) { terminar = true; break; }
+                if (numero_mesa_pedido == mesa.getNumero()) {
+                    terminar = true;
+                    mesa_pedido = mesa;
+                    break;
+                } else {
+                    System.out.println("ERR0R: No se encontró esa mesa.");
+                    terminar = false;
+                }
             }
-            if (!terminar) {
-                System.out.println("ERR0R: No se encontró esa mesa.");
-            }
-
         } while (!terminar);
 
         terminar = false;
@@ -104,7 +106,7 @@ public class Restaurante {
             }
         } while (!terminar);
         
-        Pedido pedido = new Pedido(mesa_pedido, platos_pedido);
+        Pedido pedido = new Pedido(id, mesa_pedido, platos_pedido);
         lista_pedidos.add(pedido);
     }
 
@@ -124,9 +126,7 @@ public class Restaurante {
 
     public void mostrarPedidos() {
         for (Pedido pedido : lista_pedidos) {
-            System.out.println("Pedido mesa Nº" + pedido.getNumeroMesa() + " platos: " + pedido.getListaPlatos().get(0).getNombre() + " estado: " + pedido.getEstadoCompletado() + " total: " + pedido.getPrecioTotal());
+            System.out.println("Pedido " + pedido.getID() + " mesa " + pedido.getNumeroMesa() + " platos: " + pedido.getListaPlatos().get(0).getNombre() + " estado: " + pedido.getEstadoCompletado() + " total: " + pedido.getPrecioTotal());
         }
     }
-
-
 }
