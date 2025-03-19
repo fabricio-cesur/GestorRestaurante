@@ -164,6 +164,52 @@ public class Restaurante {
         }
     }
 
+    public void modificarPlato() {
+        boolean terminar;
+        String codigo_plato;
+
+        String nuevo_codigo = "";
+        String nuevo_nombre = "";
+        double nuevo_precio = 0.0;
+
+        Plato plato_modificado = null;
+
+        do { 
+            System.out.print("Código del plato a modificar: ");
+            codigo_plato = sc.nextLine();
+            if (lista_platos.containsKey(codigo_plato)) {
+                plato_modificado = lista_platos.get(codigo_plato);
+                do { 
+                    System.out.print("Nuevo código: ");
+                    nuevo_codigo = sc.nextLine();
+                    if (lista_platos.containsKey(nuevo_codigo)) {
+                        System.out.println("ERR0R: Otro plato ya tiene este código");
+                    }
+                } while (lista_platos.containsKey(nuevo_codigo));
+                System.out.println("Nuevo nombre: ");
+                nuevo_nombre = sc.nextLine();
+                do { 
+                    System.out.println("Nuevo precio: $");
+                    nuevo_precio = sc.nextDouble();
+                    if (nuevo_precio <= 0) {
+                        System.out.println("ERR0R: El precio debe ser un decimal positivo");
+                    }
+                } while (nuevo_precio <= 0);
+                terminar = true;
+            } else {
+                System.out.println("ERR0R: No se encontró el plato");
+                terminar = false;
+            }
+        } while (!terminar);
+
+        if (plato_modificado != null) {
+            plato_modificado.setCodigo(nuevo_codigo);
+            plato_modificado.setNombre(nuevo_nombre);
+            plato_modificado.setPrecio(nuevo_precio);
+        } else {
+            System.out.println("ERR0R: El plato a modificar no se pudo encontrar");
+        }
+    }
     
     public void mostrarMesas() {
         Mesa mesa;

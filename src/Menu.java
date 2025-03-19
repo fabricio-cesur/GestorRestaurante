@@ -68,7 +68,7 @@ public class Menu {
             System.out.println("1. Registrar Mesa");
             System.out.println("2. Modificar Mesa");
             System.out.println("3. Eliminar Mesa");
-            System.out.println("0. Salir");
+            System.out.println("0. Atrás");
             System.out.print(">>> ");
             opcion = sc.next();
             switch (opcion) {
@@ -100,7 +100,7 @@ public class Menu {
             System.out.println("1. Registrar Plato");
             System.out.println("2. Modificar Plato");
             System.out.println("3. Eliminar Plato");
-            System.out.println("0. Salir");
+            System.out.println("0. Atrás");
             System.out.print(">>> ");
             opcion = sc.next();
             switch (opcion) {
@@ -108,7 +108,7 @@ public class Menu {
                     res.registrarPlato();
                 }
                 case "2", "modificar", "MODIFICAR" -> {
-                    //res.modificarPlato();
+                    res.modificarPlato();
                 }
                 case "3", "eliminar", "ELIMINAR" -> {
                     //res.eliminarPlato();
@@ -132,7 +132,7 @@ public class Menu {
             System.out.println("1. Registrar Pedidos");
             System.out.println("2. Modificar Pedidos");
             System.out.println("3. Eliminar Pedidos");
-            System.out.println("0. Salir");
+            System.out.println("0. Atrás");
             System.out.print(">>> ");
             opcion = sc.next();
             switch (opcion) {
