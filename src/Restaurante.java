@@ -113,20 +113,32 @@ public class Restaurante {
     
     public void mostrarMesas() {
         for (Mesa mesa : lista_mesas) {
-            System.out.println("Mesa Nº" + mesa.getNumero() + " capacidad: " + mesa.getCapacidad());
+            System.out.println("Mesa Nº" + mesa.getNumero() + " capacidad: " + mesa.getCapacidad() + " personas");
         }
     }
 
     public void mostrarPlatos() {
         for (String cod_plato : lista_platos.keySet()) {
             Plato plato = lista_platos.get(cod_plato);
-            System.out.println("Plato " + plato.getCodigo() + ": '" + plato.getNombre() + "' precio: " + plato.getPrecio());
+            System.out.println("Plato " + plato.getCodigo() + ": '" + plato.getNombre() + "' precio: $" + plato.getPrecio());
         }
     }
 
     public void mostrarPedidos() {
         for (Pedido pedido : lista_pedidos) {
-            System.out.println("Pedido " + pedido.getID() + " mesa " + pedido.getNumeroMesa() + " platos: " + pedido.getListaPlatos().get(0).getNombre() + " estado: " + pedido.getEstadoCompletado() + " total: " + pedido.getPrecioTotal());
+            System.out.println("Pedido " + pedido.getID() + " para mesa Nº" + pedido.getNumeroMesa());
+            System.out.println("Platos: ");
+            for (Plato plato : pedido.getListaPlatos()) {
+                System.out.println("\t" + plato.getNombre() + " $" + plato.getPrecio());
+            }
+            System.out.print("Estado: ");
+            if (!pedido.getEstadoCompletado()) {
+                System.out.println("pendiente");
+            } else {
+                System.out.println("completado");
+            }
+            System.out.println("Total: $" + pedido.getPrecioTotal());
+            System.out.println();
         }
     }
 }
