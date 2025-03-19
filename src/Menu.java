@@ -1,7 +1,9 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 
 public class Menu {
+    public static boolean vaciar = true;
     @SuppressWarnings("ConvertToTryWithResources")
     public static void main(String[] args) {
         
@@ -9,50 +11,59 @@ public class Menu {
 
         Scanner sc = new Scanner(System.in);
         String opcion;
-
-        do { 
-            
-            System.out.println("\nBienvenido al Gestor del Restaurante");
-            System.out.println("Elija lo que quiere hacer:");
-            System.out.println("1. Registrar Mesa");
-            System.out.println("2. Registrar Plato");
-            System.out.println("3. Registrar Pedido");
-            System.out.println("4. Modificar Platos");
-            System.out.println("5. Modificar Mesas");
-            System.out.println("6. Modificar Pedidos");
-            System.out.println("7. Cargar Datos");
-            System.out.println("8. Guardar Datos");
-            System.out.println("9. Mostrar los Datos");
+        vaciar_consola();
+        System.out.println("Bienvenido al Gestor del Restaurante");
+        do {
+            System.out.println("Elija qué quiere manejar:");
+            System.out.println("1. Mesas");
+            System.out.println("2. Platos");
+            System.out.println("3. Pedidos");
+            System.out.println("4. Descuentos");
+            System.out.println("5. Datos");
             System.out.println("0. Salir");
             System.out.print(">>> ");
             opcion = sc.next();
+            vaciar_consola();
             
             switch (opcion) {
-                case "1" -> {
-                    res.registrarMesa();
+                case "1", "mesas", "MESAS" -> {
+                    vaciar_consola();
+                    System.out.println("¿Qué quiere hacer con las mesas?");
+                    System.out.println("1. Registrar Mesa");
+                    System.out.println("2. Modificar Mesa");
+                    System.out.println("3. Eliminar Mesa");
+                    System.out.println("0. Salir");
+                    System.out.print(">>> ");
+                    opcion = sc.next();
+                    vaciar_consola();
                 }
-                case "2" -> {
-                    res.registrarPlato();
+                case "2", "platos", "PLATOS" -> {
+                    vaciar_consola();
+                    System.out.println("¿Qué quiere hacer con los platos?");
+                    System.out.println("1. Registrar Plato");
+                    System.out.println("2. Modificar Plato");
+                    System.out.println("3. Eliminar Plato");
+                    System.out.println("0. Salir");
+                    System.out.print(">>> ");
+                    opcion = sc.next();
+                    vaciar_consola();
                 }
-                case "3" -> {
-                    res.registrarPedido();
+                case "3", "pedidos", "PEDIDOS" -> {
+                    vaciar_consola();
+                    System.out.println("¿Qué quiere hacer con las pedidos?");
+                    System.out.println("1. Registrar Pedido");
+                    System.out.println("2. Modificar Pedido");
+                    System.out.println("3. Eliminar Pedido");
+                    System.out.println("0. Salir");
+                    System.out.print(">>> ");
+                    opcion = sc.next();
+                    vaciar_consola();
                 }
                 case "4" -> {
-                    //TODO: Crear el método: res.modificarMesas();
+                    //TODO: Todo el funcionamiento de descuentos
                 }
                 case "5" -> {
-                    //TODO: Crear el método: res.modificarPlatos();
-                }
-                case "6" -> {
-                    //TODO: Crear el método: res.modificarPedidos();
-                }
-                case "7" -> {
-                    //TODO: Crear el método: res.cargarDatos();
-                }
-                case "8" -> {
-                    //TODO: Crear el método: res.guardarDatos();
-                }
-                case "9" -> {
+                    vaciar_consola();
                     System.out.println("");
                     res.mostrarMesas();
                     System.out.println("");
@@ -65,11 +76,29 @@ public class Menu {
                     //salir
                 }
                 default -> {
-                    //TODO: Mensaje de comando no reconocido
+                    System.out.println("ERR0R: Comando no reconocido");
                 }
             }
             
         } while (!opcion.equals("0"));
         sc.close();
+    }
+
+    public static void vaciar_consola() {
+        String os = System.getProperty("os.name");
+
+        if (vaciar) {
+            try {
+                if (os.contains("Windows")) {
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                } else {
+                    System.out.println("\033[H\033[2J");
+                    System.out.flush();
+                }
+            } catch (IOException | InterruptedException e) {
+                vaciar = false;
+                System.err.println("ERR0R al vaciar la consola: " + e.getMessage());
+            }
+        }
     }
 }
