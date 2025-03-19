@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Restaurante {
     Scanner sc = new Scanner(System.in);
 
-    LinkedList<Mesa> lista_mesas = new LinkedList<>();
+    HashMap<Integer, Mesa> lista_mesas = new HashMap<>();
     HashMap<String, Plato> lista_platos = new HashMap<>();
-    LinkedList<Pedido> lista_pedidos = new LinkedList<>();
+    HashMap<Integer, Pedido> lista_pedidos = new HashMap<>();
     
     public void registrarMesa() {
         int numero_mesa;
@@ -26,7 +26,7 @@ public class Restaurante {
         } while (capacidad_mesa <= 0);
 
         Mesa mesa = new Mesa(numero_mesa, capacidad_mesa);
-        lista_mesas.add(mesa);
+        lista_mesas.put(numero_mesa, mesa);
     }
 
     public void registrarPlato() {
@@ -72,20 +72,16 @@ public class Restaurante {
         String codigo_plato_pedido;
 
         do {
-            terminar = true;
             System.out.print("Ingresa el número de la mesa: ");
             numero_mesa_pedido = sc.nextInt();
             sc.nextLine();
 
-            for (Mesa mesa : this.lista_mesas) {
-                if (numero_mesa_pedido == mesa.getNumero()) {
-                    terminar = true;
-                    mesa_pedido = mesa;
-                    break;
-                } else {
-                    System.out.println("ERR0R: No se encontró esa mesa.");
-                    terminar = false;
-                }
+            if (lista_mesas.containsKey(numero_mesa_pedido)) {
+                terminar = true;
+                mesa_pedido = lista_mesas.get(numero_mesa_pedido);
+            } else {
+                System.out.println("ERR0R: No se encontró esa mesa");
+                terminar = false;
             }
         } while (!terminar);
 
@@ -107,12 +103,14 @@ public class Restaurante {
         } while (!terminar);
         
         Pedido pedido = new Pedido(id, mesa_pedido, platos_pedido);
-        lista_pedidos.add(pedido);
+        lista_pedidos.put(id, pedido);
     }
 
     
     public void mostrarMesas() {
-        for (Mesa mesa : lista_mesas) {
+        Mesa mesa;
+        for (int numero_mesa : lista_mesas.keySet()) {
+            mesa = lista_mesas.get(numero_mesa);
             System.out.println("Mesa Nº" + mesa.getNumero() + " capacidad: " + mesa.getCapacidad() + " personas");
         }
     }
@@ -125,7 +123,9 @@ public class Restaurante {
     }
 
     public void mostrarPedidos() {
-        for (Pedido pedido : lista_pedidos) {
+        Pedido pedido;
+        for (int id_pedido : lista_pedidos.keySet()) {
+            pedido = lista_pedidos.get(id_pedido);
             System.out.println("Pedido " + pedido.getID() + " para mesa Nº" + pedido.getNumeroMesa());
             System.out.println("Platos: ");
             for (Plato plato : pedido.getListaPlatos()) {
