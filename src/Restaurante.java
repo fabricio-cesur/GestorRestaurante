@@ -12,14 +12,22 @@ public class Restaurante {
     public void registrarMesa() {
         int numero_mesa;
         int capacidad_mesa;
+        boolean terminar;
 
-        //TODO: Validar que el número de mesa no se repita
         do {
+            terminar = true;
             System.out.print("Ingresa el número de mesa: ");
             numero_mesa = sc.nextInt();
             sc.nextLine();
-        } while (numero_mesa <= 0);
-        do { 
+            if (numero_mesa < 0) {
+                System.out.println("ERR0R: El número debe ser mayor entero positivo");
+                terminar = false;
+            } else if (lista_mesas.containsKey(numero_mesa)) {
+                System.out.println("ERR0R: Otra mesa ya tiene ese número");
+                terminar = false;
+            }
+        } while (!terminar);
+        do {
             System.out.print("Ingresa la capacidad de la mesa: ");
             capacidad_mesa = sc.nextInt();
             sc.nextLine();
