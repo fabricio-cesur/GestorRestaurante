@@ -39,14 +39,7 @@ public class Menu {
                     //TODO: Todo el funcionamiento de descuentos
                 }
                 case "5" -> {
-                    vaciar_consola();
-                    System.out.println("");
-                    res.mostrarMesas();
-                    System.out.println("");
-                    res.mostrarPlatos();
-                    System.out.println("");
-                    res.mostrarPedidos();
-                    System.out.println("");
+                    res.mostrarTodo();
                 }
                 case "0" -> {
                     //salir
@@ -63,14 +56,16 @@ public class Menu {
     public static void menu_mesas() {
         String opcion;
         do {
-            vaciar_consola();
+            System.out.println("");
             System.out.println("¿Qué quiere hacer con las mesas?");
             System.out.println("1. Registrar Mesa");
             System.out.println("2. Modificar Mesa");
             System.out.println("3. Eliminar Mesa");
+            System.out.println("4. Mostrar Mesas");
             System.out.println("0. Atrás");
             System.out.print(">>> ");
             opcion = sc.next();
+            vaciar_consola();
             switch (opcion) {
                 case "1", "registrar", "REGISTRAR" -> {
                     res.registrarMesa();
@@ -81,6 +76,9 @@ public class Menu {
                 case "3", "eliminar", "ELIMINAR" -> {
                     //res.eliminarMesa();
                 }
+                case "4", "mostrar", "MOSTRAR" -> {
+                    res.mostrarMesas();
+                }
                 case "0" -> {
                     //salir
                 }
@@ -89,20 +87,20 @@ public class Menu {
                 }
             }
         } while (!opcion.equals("0"));
-        vaciar_consola();
     }
 
     public static void menu_platos() {
         String opcion;
         do {
-            vaciar_consola();
             System.out.println("¿Qué quiere hacer con las platos?");
             System.out.println("1. Registrar Plato");
             System.out.println("2. Modificar Plato");
             System.out.println("3. Eliminar Plato");
+            System.out.println("4. Mostrar Platos");
             System.out.println("0. Atrás");
             System.out.print(">>> ");
             opcion = sc.next();
+            vaciar_consola();
             switch (opcion) {
                 case "1", "registrar", "REGISTRAR" -> {
                     res.registrarPlato();
@@ -113,6 +111,9 @@ public class Menu {
                 case "3", "eliminar", "ELIMINAR" -> {
                     //res.eliminarPlato();
                 }
+                case "4", "mostrar", "MOSTRAR" -> {
+                    res.mostrarPlatos();
+                }
                 case "0" -> {
                     //salir
                 }
@@ -121,20 +122,20 @@ public class Menu {
                 }
             }
         } while (!opcion.equals("0"));
-        vaciar_consola();
     }
 
     public static void menu_pedidos() {
         String opcion;
         do {
-            vaciar_consola();
             System.out.println("¿Qué quiere hacer con los pedidos?");
             System.out.println("1. Registrar Pedidos");
             System.out.println("2. Modificar Pedidos");
             System.out.println("3. Eliminar Pedidos");
+            System.out.println("4. Mostrar Pedidos");
             System.out.println("0. Atrás");
             System.out.print(">>> ");
             opcion = sc.next();
+            vaciar_consola();
             switch (opcion) {
                 case "1", "registrar", "REGISTRAR" -> {
                     res.registrarPedido();
@@ -145,6 +146,9 @@ public class Menu {
                 case "3", "eliminar", "ELIMINAR" -> {
                     //res.eliminarPedido();
                 }
+                case "4", "mostrar", "MOSTRAR" -> {
+                    res.mostrarPedidos();
+                }
                 case "0" -> {
                     //salir
                 }
@@ -153,7 +157,6 @@ public class Menu {
                 }
             }
         } while (!opcion.equals("0"));
-        vaciar_consola();
     }
 
 

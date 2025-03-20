@@ -9,6 +9,8 @@ public class Restaurante {
     HashMap<String, Plato> lista_platos = new HashMap<>();
     HashMap<Integer, Pedido> lista_pedidos = new HashMap<>();
     
+    
+
     public void registrarMesa() {
         int numero_mesa;
         int capacidad_mesa;
@@ -35,6 +37,7 @@ public class Restaurante {
 
         Mesa mesa = new Mesa(numero_mesa, capacidad_mesa);
         lista_mesas.put(numero_mesa, mesa);
+        System.out.println("Mesa registrada con éxito!");
     }
 
     public void registrarPlato() {
@@ -44,7 +47,6 @@ public class Restaurante {
 
         boolean terminar;
 
-        //TODO: Crear validación para el formato del código del plato (Como que solo tenga 4 carácteres en mayúsculas)
         System.out.print("Ingresa el código del plato: ");
         codigo_plato = sc.nextLine();
         
@@ -66,6 +68,7 @@ public class Restaurante {
 
         Plato plato = new Plato(codigo_plato, nombre_plato, precio_plato);
         lista_platos.put(codigo_plato, plato);
+        System.out.println("Plato registrado con éxito!");
     }
     
     public void registrarPedido() {
@@ -112,7 +115,9 @@ public class Restaurante {
         
         Pedido pedido = new Pedido(id, mesa_pedido, platos_pedido);
         lista_pedidos.put(id, pedido);
+        System.out.println("Pedido registrado con éxito!");
     }
+
 
 
     public void modificarMesa() {
@@ -211,38 +216,69 @@ public class Restaurante {
         }
     }
     
+    
+    
     public void mostrarMesas() {
         Mesa mesa;
-        for (int numero_mesa : lista_mesas.keySet()) {
-            mesa = lista_mesas.get(numero_mesa);
-            System.out.println("Mesa Nº" + mesa.getNumero() + " capacidad: " + mesa.getCapacidad() + " personas");
+        System.out.print("Mesas: ");
+        if (lista_mesas.isEmpty()) {
+            System.out.println("No hay mesas registradas");
+        } else {
+            System.out.println("");
+            for (int numero_mesa : lista_mesas.keySet()) {
+                mesa = lista_mesas.get(numero_mesa);
+                System.out.println("Mesa Nº" + mesa.getNumero() + " capacidad: " + mesa.getCapacidad() + " personas");
+            }
         }
+        System.out.println("");
     }
 
     public void mostrarPlatos() {
-        for (String cod_plato : lista_platos.keySet()) {
-            Plato plato = lista_platos.get(cod_plato);
-            System.out.println("Plato " + plato.getCodigo() + ": '" + plato.getNombre() + "' precio: $" + plato.getPrecio());
+        Plato plato;
+        System.out.print("Platos: ");
+        if (lista_platos.isEmpty()) {
+            System.out.println("No hay platos registrados");
+        } else {
+            System.out.println();
+            for (String cod_plato : lista_platos.keySet()) {
+                plato = lista_platos.get(cod_plato);
+                System.out.println("Plato " + plato.getCodigo() + ": '" + plato.getNombre() + "' precio: $" + plato.getPrecio());
+            }
         }
+        System.out.println("");
     }
 
     public void mostrarPedidos() {
         Pedido pedido;
-        for (int id_pedido : lista_pedidos.keySet()) {
-            pedido = lista_pedidos.get(id_pedido);
-            System.out.println("Pedido " + pedido.getID() + " para mesa Nº" + pedido.getNumeroMesa());
-            System.out.println("Platos: ");
-            for (Plato plato : pedido.getListaPlatos()) {
-                System.out.println("\t" + plato.getNombre() + " $" + plato.getPrecio());
+        System.out.print("Pedidos: ");
+        if (lista_pedidos.isEmpty()) {
+            System.out.println("No hay pedidos registrados");
+        } else {
+            System.out.println("");
+            for (int id_pedido : lista_pedidos.keySet()) {
+                pedido = lista_pedidos.get(id_pedido);
+                System.out.println("Pedido " + pedido.getID() + " para mesa Nº" + pedido.getNumeroMesa());
+                System.out.println("Platos: ");
+                for (Plato plato : pedido.getListaPlatos()) {
+                    System.out.println("\t" + plato.getNombre() + " $" + plato.getPrecio());
+                }
+                System.out.print("Estado: ");
+                if (!pedido.getEstadoCompletado()) {
+                    System.out.println("pendiente");
+                } else {
+                    System.out.println("completado");
+                }
+                System.out.println("Total: $" + pedido.getPrecioTotal());
+                System.out.println();
             }
-            System.out.print("Estado: ");
-            if (!pedido.getEstadoCompletado()) {
-                System.out.println("pendiente");
-            } else {
-                System.out.println("completado");
-            }
-            System.out.println("Total: $" + pedido.getPrecioTotal());
-            System.out.println();
         }
+        System.out.println("");
+    }
+
+    public void mostrarTodo() {
+        System.out.println("");
+        mostrarMesas();
+        mostrarPlatos();
+        mostrarPedidos();
     }
 }
