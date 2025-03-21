@@ -37,6 +37,7 @@ public class Menu {
                 }
                 case "4" -> {
                     //TODO: Todo el funcionamiento de descuentos
+                    //Empleados envés de descuentos?
                 }
                 case "5" -> {
                     res.mostrarTodo();

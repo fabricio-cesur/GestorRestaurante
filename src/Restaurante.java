@@ -216,6 +216,52 @@ public class Restaurante {
         }
     }
     
+    public void modificarPedido() {
+        boolean terminar;
+        int id;
+        String opcion;
+
+        int nuevo_num_mesa = 0;
+        Mesa nueva_Mesa = null;
+        LinkedList<Plato> platos = null;
+        boolean nuevo_completado;
+        double nuevo_total;
+        
+        Pedido pedido_modificado = null; 
+        do {
+            System.out.print("ID del Pedido a modificar: ");
+            id = sc.nextInt();
+            sc.nextLine();
+            if (lista_pedidos.containsKey(id)) {
+                pedido_modificado = lista_pedidos.get(id);
+                do { 
+                    System.out.print("Número de la nueva mesa: ");
+                    nuevo_num_mesa = sc.nextInt();
+                    if (!lista_mesas.containsKey(nuevo_num_mesa)) {
+                        System.out.println("ERR0R: Esa mesa no existe");
+                    }
+                } while (!lista_mesas.containsKey(nuevo_num_mesa));
+                nueva_Mesa = lista_mesas.get(nuevo_num_mesa);
+                platos = pedido_modificado.getListaPlatos();
+                do { 
+                    System.out.println("Estado del pedido:");
+                    System.out.println("1. Completado");
+                    System.out.println("2. Pendiente");
+                    opcion = sc.nextLine();
+                    switch (opcion) {
+                        case "1", "Completado" -> {}
+                        case "2", "Pendiente" -> {}
+                        default -> {}
+                    }
+                    //TODO: Terminar método de modificarPedido
+                } while (false);
+                terminar = true;
+            } else {
+                System.out.println("ERR0R: No se encontró el pedido.");
+                terminar = false;
+            }
+        } while (!terminar);
+    }
     
     
     public void mostrarMesas() {
